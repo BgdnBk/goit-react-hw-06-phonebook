@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import s from "../ContactForm/ContactForm.module.css";
 import { connect } from "react-redux";
@@ -9,7 +8,8 @@ function СontactForm({ contactList, onDeleted }) {
   return (
     <TransitionGroup component="ul" classNames={s.table}>
       {contactList.map(({ id, name, number }) => {
-        console.log("this is CLSt", contactList);
+        console.log("this is CLSt", contactList.name.name);
+
         return (
           <CSSTransition key={id} timeout={250} classNames={s} unmountOnExit>
             <li>
@@ -29,22 +29,11 @@ function СontactForm({ contactList, onDeleted }) {
   );
 }
 
-// СontactForm.propTypes = {
-//   contactList: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     })
-//   ),
-//   onDeleted: PropTypes.func.isRequired,
-// };
-
 const getFilter = (allContacts, filter) => {
   const filterValues = filter.toLowerCase();
-
-  return allContacts.filter(({ contact }) =>
-    contact.toLowerCase().includes(filterValues)
+  console.log("this is ALLCONT", allContacts);
+  return allContacts.filter(({ name }) =>
+    name.toLowerCase().includes(filterValues)
   );
 };
 
