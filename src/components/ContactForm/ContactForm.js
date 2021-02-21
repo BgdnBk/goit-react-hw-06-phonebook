@@ -8,8 +8,6 @@ function СontactForm({ contactList, onDeleted }) {
   return (
     <TransitionGroup component="ul" classNames={s.table}>
       {contactList.map(({ id, name, number }) => {
-        console.log("this is CLSt", contactList.name.name);
-
         return (
           <CSSTransition key={id} timeout={250} classNames={s} unmountOnExit>
             <li>
